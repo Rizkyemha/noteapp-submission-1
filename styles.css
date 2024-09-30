@@ -1,0 +1,249 @@
+h3,
+p,
+button {
+	border: none !important;
+	background-color: transparent;
+	padding: 0px;
+	margin: 0px;
+}
+
+* {
+	box-sizing: border-box;
+	font-size: 16px;
+	font-family: monospace;
+}
+
+body {
+	margin: 0px auto;
+	padding: 0px;
+}
+
+main {
+	max-width: 1440px;
+	margin: 0px auto;
+}
+
+/* utilitas */
+
+.close {
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.2s ease-in, visibility 0.2s ease-in;
+}
+
+.open {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.2s ease-in, visibility 0.2s ease-in;
+}
+
+.blur_background {
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	z-index: 2;
+
+	width: 100vw;
+	height: 100vh;
+
+	backdrop-filter: blur(1px);
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Header */
+
+header {
+	background-color: #500c0c;
+	width: 100vw;
+	padding: 1rem;
+}
+
+header h3 {
+	font-size: 1.25rem;
+	color: white;
+}
+
+/* main */
+
+.container_notes {
+	margin: 1rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.container_notes .notes {
+	flex-basis: 328px;
+	flex-grow: 1;
+}
+
+.container_notes .notes h3 {
+	font-size: 1.25rem;
+	color: #500c0c;
+	font-weight: 600;
+	margin-bottom: 1em;
+}
+
+/* card */
+
+.card {
+	padding: 1.25rem 1rem;
+	border-radius: 0.75rem;
+	border: 1px solid black;
+	flex-basis: 328px;
+	height: 300px;
+	gap: 1rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.card .note_info {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	gap: 0.5rem;
+	font-size: 0.75rem;
+}
+
+.card .note_info p {
+	font-size: 0.75rem;
+}
+
+.card .note_title {
+	font-size: 1.25rem;
+	color: #500c0c;
+	font-weight: 600;
+}
+
+/* add note form */
+
+.container_form_popup {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 10;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.add_note {
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+
+	flex-basis: 500px;
+	height: fit-content;
+
+	background-color: #500c0c;
+	padding: 2rem;
+	gap: 1rem;
+
+	margin: 2rem;
+}
+
+.add_note .exit_action {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+
+	padding: 0.5rem;
+	margin: 0.5rem;
+
+	width: 44px;
+	height: 44px;
+
+	border: none !important;
+}
+
+.add_note .exit_action img {
+	object-fit: cover;
+	width: auto;
+	height: 100%;
+
+	transition: scale ease-in 0.2s;
+}
+
+.add_note .exit_action img:hover {
+	cursor: pointer;
+	transform: scale(1.05);
+}
+
+.form_group {
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+}
+
+.form_group label {
+	font-size: 1.13rem;
+	color: white;
+}
+
+.form_group input {
+	padding: 0.75rem 1rem;
+}
+
+.form_group textarea {
+	flex-basis: 250px;
+	padding: 1rem;
+}
+
+.add_note button:nth-of-type(2) {
+	padding: 1rem 1.4rem;
+	font-size: 1.13rem;
+	color: white;
+
+	border: 1px solid white !important;
+
+	transition: font-weight ease-in 0.2s;
+	transition: background-color ease-in 0.2s;
+}
+
+.add_note button:nth-of-type(2):hover {
+	color: #500c0c;
+	cursor: pointer;
+	font-weight: 900;
+	background-color: azure;
+}
+
+/* Action button */
+
+.container_action {
+	background-color: #500c0c;
+	width: 100vw;
+	padding: 0.5rem 0px;
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	bottom: 0px;
+}
+
+.container_action button p {
+	color: white;
+	font-size: 0.75rem;
+}
+
+.container_action button div {
+	min-width: 44px;
+	min-height: 44px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.container_action button div img:hover {
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
+.container_action button div img {
+	object-fit: cover;
+	height: auto;
+	width: 25px;
+	transition: transform ease-in 0.1s;
+}

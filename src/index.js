@@ -36,4 +36,5 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 
 	console.log("Listener untuk RENDER_EVENT telah dipasang");
+	dispatchEvent(render);
 });

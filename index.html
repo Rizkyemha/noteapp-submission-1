@@ -5,7 +5,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./styles.css" />
 		<title>Noteapp</title>
-		<script type="module" src="/src/index.js"></script>
 	</head>
 	<body>
 		<header>
@@ -15,34 +14,16 @@
 			<section class="container_notes">
 				<div class="notes">
 					<h3 class="notes_header">Archived</h3>
-					<div id="notes_archived" class="notes_render">
-						<div id="blabla2" class="card">
-							<div class="note_info">
-								<p>Date</p>
-								<p>|</p>
-								<p>Archived</p>
-							</div>
-							<p class="note_title">Title</p>
-							<p class="note_desc">Description</p>
-						</div>
-					</div>
+					<div id="notes_archived" class="notes_render"></div>
 				</div>
 				<div class="notes">
 					<h3 class="notes_header">Unarchived</h3>
-					<div id="notes_unarchived" class="notes_render">
-						<div id="blabla" class="card">
-							<div class="note_info">
-								<p>Date</p>
-								<p>|</p>
-								<p>Archived</p>
-							</div>
-							<p class="note_title">Title</p>
-							<p class="note_desc">Description</p>
-						</div>
-					</div>
+					<div id="notes_unarchived" class="notes_render"></div>
 				</div>
 			</section>
 		</main>
+
+		<!-- ACTION ADD BUTTON -->
 		<div class="container_action">
 			<button id="button_add_note">
 				<div>
@@ -51,33 +32,12 @@
 				<p>add note</p>
 			</button>
 		</div>
-		<div id="add_note_form_container" class="container_form_popup close">
-			<form id="add_note_form" class="add_note">
-				<button type="reset" class="exit_action">
-					<img src="./assets/cancel_icon.svg" />
-				</button>
-				<div class="form_group">
-					<label for="title">Title</label>
-					<input
-						id="title"
-						type="text"
-						name="title"
-						required
-						placeholder="Judul catatan" />
-					<p class="close">hint</p>
-				</div>
-				<div class="form_group">
-					<label for="body" class="close"></label>
-					<textarea
-						id="body"
-						type="text"
-						name="body"
-						placeholder="Tulis catatanmu disini !!!"
-						required></textarea>
-				</div>
-				<button>Buat catatan</button>
-			</form>
-		</div>
+
+		<!-- FORM CUSTOM ELEMENT -->
+		<form-component></form-component>
+
+		<!-- background -->
 		<div id="blur_background" class="blur_background close"></div>
+		<script type="module" src="./src/index.js"></script>
 	</body>
 </html>

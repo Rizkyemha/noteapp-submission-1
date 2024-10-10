@@ -1,40 +1,56 @@
-import { card_note } from "./components/cardNote.js";
-import { RENDER_EVENT, render } from "./utils/render.js";
+import { notes } from "./data/index.js";
+import "./components/form.js";
+import "./components/notes.js";
+import "./components/card.js";
+import "./components/empty.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-	const note = [];
+	// event render
+	const RENDER_EVENT = "RENDER_EVENT";
+	const render = new Event(RENDER_EVENT);
 
-	const _addNoteButton = document.getElementById("button_add_note");
-	const _addNoteForm = document.getElementById("add_note_form_container");
-	const _formField = document.getElementById("add_note_form");
-	const _blurBackground = document.getElementById("blur_background");
+	const notes_unarchived = document.getElementById("notes_unarchived");
+	const notes_archived = document.getElementById("notes_archived");
+	const _form = document.querySelector(".add_note");
 
-	function toogleClass() {
-		_addNoteForm.classList.toggle("open");
-		_addNoteForm.classList.toggle("close");
-		_blurBackground.classList.toggle("open");
-		_blurBackground.classList.toggle("close");
+	function addNote() {
+		const title = _form.elements.title.value;
+		const body = _form.elements.body.value;
+		const id = `${new Date().getUTCMilliseconds()}`;
+		const date = new Date().getDate();
+		const archived = false;
+
+		return {
+			id,
+			title,
+			body,
+			date,
+			archived,
+		};
 	}
 
-	document.addEventListener(RENDER_EVENT, function () {
-		console.log("yahahaha");
-	});
-
-	_addNoteButton.addEventListener("click", (e) => {
+	_form.addEventListener("submit", (e) => {
 		e.preventDefault();
-		toogleClass();
+		const newNote = addNote();
+		notes.push(newNote);
+		document.dispatchEvent(render);
 	});
 
-	_formField.addEventListener("reset", (e) => {
-		e.preventDefault();
-		toogleClass();
+	document.addEventListener(RENDER_EVENT, () => {
+		console.log("RENDER BERJALAN AMAN");
+
+		notes_archived.innerHTML = "";
+		notes_unarchived.innerHTML = "";
+
+		notes.forEach((note) => {
+			const cardNote = document.createElement("card-note");
+			cardNote.note = note;
+
+			note.archived
+				? notes_archived.appendChild(cardNote)
+				: notes_unarchived.appendChild(cardNote);
+		});
 	});
 
-	_formField.addEventListener("submit", (e) => {
-		e.preventDefault();
-		toogleClass();
-	});
-
-	console.log("Listener untuk RENDER_EVENT telah dipasang");
-	dispatchEvent(render);
+	document.dispatchEvent(render);
 });
